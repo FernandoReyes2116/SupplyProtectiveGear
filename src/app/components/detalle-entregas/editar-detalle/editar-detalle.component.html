@@ -1,0 +1,53 @@
+{{ detalleData | json }}
+<div *ngIf="detalleData">
+  <h2>Detalles de Entrega</h2>
+  <p>ID de Detalle de Entrega: {{ detalleData.idDetalleEntrega }}</p>
+  <p>ID de Motivos: {{ detalleData.idMotivos }}</p>
+  <p>Nombre de Motivo: {{ detalleData.nombreMotivo }}</p>
+  <p>Empleado de Entrega: {{ detalleData.empleadoaEntrega }}</p>
+  <p>Fecha de Registro: {{ detalleData.fechaRegistro }}</p>
+</div>
+<div *ngIf="loading">
+  <p>Cargando datos...</p>
+</div>
+<div *ngIf="!detalleData && !loading">
+  <p>No se encontraron datos de entrega.</p>
+</div>
+
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center ion-padding">Editar Registro del Detalle</ion-title>
+  </ion-toolbar>
+</ion-header>
+<form [formGroup]="myform" >  
+    
+  <!-- Sección de Empleado-->     
+  <ion-item>
+    <ion-input label="Empleado" formControlName="empleadoaEntrega"></ion-input>
+  </ion-item>
+
+  <!-- Sección de Motivos -->
+  <ion-item>
+    <ion-select label="Motivos" position="stacked"
+     formControlName="idMotivos">
+      <ion-select-option
+      class="error ion-select"
+        *ngFor="let motivo of Motivos"
+        [value]="motivo.idMotivos">
+        {{ motivo.nombreMotivo }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>         
+  
+  <!-- Sección de footer -->
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button type="submit" expand="block" (click)="updateDetalle()">Actualizar</ion-button>
+      <ion-button expand="block"  (click)="toList()">Regresar</ion-button>
+    </ion-toolbar>
+  </ion-footer>        
+         
+</form>
+

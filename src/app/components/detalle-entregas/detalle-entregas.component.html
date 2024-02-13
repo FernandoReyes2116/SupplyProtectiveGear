@@ -1,0 +1,90 @@
+<!-- detalle-entregas.component.html -->
+<div class="encabezado">
+  <h2>Registros</h2>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="auto" class="ion-text-end">
+        <ion-icon (click)="toList()" name="return-up-back-outline"></ion-icon>
+      </ion-col>
+      <ion-col size="auto" class="ion-text-end">
+        <ion-icon (click)="scrollToFooter()" name="arrow-down-outline"></ion-icon>
+      </ion-col>
+    </ion-row><br>
+
+  </ion-grid>
+  
+</div>
+
+<ion-searchbar
+  [(ngModel)]="filtro"
+  placeholder="Buscar por RequisitionNumber"
+  (ionChange)="filtrarDetalles()"
+  (ionClear)="recargarPagina()"
+></ion-searchbar>
+
+
+
+<div *ngIf="detalles && detalles.length > 0">
+  <div *ngFor="let detalleEntrega of detalles" class="card">
+    <div class="card-header">
+    </div>
+
+    <div class="card-body">
+  
+
+      <div>
+        <label>Motivo:</label>
+        <span>{{ detalleEntrega.nombreMotivo }}</span>
+      </div>
+
+      <div>
+        <label>Empleado:</label>
+        <span>{{ detalleEntrega.empleadoaEntrega }}</span>
+      </div>
+
+      <div>
+        <label>Fecha de Registro:</label>
+        <span>{{ detalleEntrega.fechaRegistro }}</span>
+      </div>
+      
+       <!-- Mostrar ePPaEntregars aquí -->
+       <div *ngFor="let epp of detalleEntrega.ePPaEntregars">
+        {{ epp }}
+      </div>
+    </div>
+    
+    <ion-grid>
+      <ion-row justify-content-center align-items-center>
+        <ion-col size="auto">
+          <!-- Segundo botón con icono -->
+          <ion-icon name="add" [routerLink]="['/home/agregar-items/', detalleEntrega?.idDetalleEntrega]"></ion-icon>
+        </ion-col>
+        <ion-col size="auto">
+          <!-- Primer botón -->
+          <ion-icon name="create-outline" routerLink="/home/editar-detalle/{{ detalleEntrega?.idDetalleEntrega }}"></ion-icon>
+        </ion-col>
+        <ion-col size="auto">
+          <!-- Segundo botón con icono -->
+          <ion-icon name="reader-outline" [routerLink]="['/home/detalle-registro/', detalleEntrega?.idDetalleEntrega]"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</div>  
+
+<footer class="pie-de-pagina" #pieDePagina >
+  <div class="contenedor">
+    <!-- Otros elementos del footer -->
+
+    <button class="boton-agregar" [routerLink]="['/home/agregar-entregas', idEntrega]">
+      <i class="fa fa-plus"></i> Agregar
+    </button>
+    <ion-col>
+      <ion-button (click)="toList()">regresar</ion-button>
+    </ion-col>
+  </div>
+</footer>
+<div *ngIf="!detalles || detalles.length === 0">
+  <p>No se encontraron detalles de entrega.</p>
+</div>

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center ion-padding">Generar entrega</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<form [formGroup]="form" (ngSubmit)="adddeliveryepps()" novalidate>
+  <ion-item>
+    <ion-input label="RequisiciónNumber" formControlName="requisitionNumber" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>ID Usuario</ion-label>
+    <ion-input formControlName="idUsuario" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-select
+      position="stacked"
+      label="Departamento"
+      formControlName="idDepartamento"
+    >
+      <ion-select-option
+        class="error ion-select"
+        *ngFor="let departamento of departamentos"
+        [value]="departamento.idDepartamento"
+      >
+        {{ departamento.nombreDepartamento }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-select
+      label="Gerencia"
+      position="stacked"
+      formControlName="idGerencia"
+    >
+      <ion-select-option
+        *ngFor="let gerencia of gerencias"
+        [value]="gerencia.idGerencia"
+      >
+        {{ gerencia.nombreGerencia }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Observaciones</ion-label>
+    <ion-textarea formControlName="observaciones"></ion-textarea>
+  </ion-item>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button type="submit" expand="block">Agregar</ion-button>
+    </ion-toolbar>
+  </ion-footer>
+</form>

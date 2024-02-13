@@ -1,0 +1,58 @@
+<div class="titulo-contenedor">
+  <h2>Agregar Items</h2>
+  <!-- Aquí puedes colocar cualquier otro contenido relacionado con los datos del detalle --><ion-grid>
+    <ion-row>
+      <ion-col size="auto" class="ion-text-end">
+        <ion-icon (click)="toList()" name="return-up-back-outline"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  
+</div>
+
+
+<ion-item>
+  <ion-label position="stacked">Número de Requisición:</ion-label>
+  <ion-input type="text" [(ngModel)]="requisitionNumber"></ion-input>
+</ion-item>
+<ion-button expand="block" (click)="loadRequisitionLines(requisitionNumber)"
+  >Cargar Requisiciones</ion-button
+>
+
+<div>
+  <form [formGroup]="myform" (ngSubmit)="agregarItem()">
+  
+    <ion-item>
+      <ion-label position="floating">Item</ion-label>
+      <ion-select formControlName="item" interface="action-sheet" [(ngModel)]="selectedItem">
+        <ion-select-option *ngFor="let item of uniqueItems" [value]="item">{{ item }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+  
+    <ion-item>
+      <ion-label position="floating">Cantidad</ion-label>
+      <ion-input formControlName="cantidad" type="number"></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="block">Agregar Item</ion-button>
+  </form>
+  
+  <ion-list>
+    <ion-item *ngFor="let item of eppaEntregarList">
+      <ion-label>{{ item.item }}</ion-label>
+      <ion-label>{{ item.cantidad }}</ion-label>
+      <!-- Añadir botón con icono de eliminar -->
+      <ion-button fill="clear" (click)="eliminarItem(item)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</div>
+
+
+
+<footer>
+  <ion-button (click)="guardarDatos()" expand="block">Guardar Items</ion-button>
+  <ion-button (click)="toList()" expand="block">Regresar</ion-button>
+</footer>

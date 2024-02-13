@@ -1,0 +1,29 @@
+<!-- login.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Iniciar sesión
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div>
+    <form (ngSubmit)="login()" autocomplete="on">
+      <ion-item>
+        <ion-label position="floating" for="emailInput">Correo electrónico</ion-label>
+        <ion-input type="text" [(ngModel)]="email" name="email" id="emailInput"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating" for="passwordInput">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password" id="passwordInput"></ion-input>
+      </ion-item>
+  
+      <ion-button expand="full" type="submit" (click)="tomenu()"  routerLink="/home">Iniciar Sesión</ion-button>
+  
+  
+    </form>
+  </div>
+
+</ion-content>

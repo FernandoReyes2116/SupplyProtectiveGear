@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Nuevo Detalle</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>  <ion-item>
+    <ion-label position="stacked">Número de Requisición:</ion-label>
+    <ion-input type="text" [(ngModel)]="requisitionNumber"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="loadRequisitionLines(requisitionNumber)"
+    >Cargar Requisiciones</ion-button
+  >
+    <form [formGroup]="form">
+      <ion-item>
+        <ion-label>Empleado a Entregar</ion-label>
+        <ion-input type="text" formControlName="empleadoaEntrega"></ion-input>
+      </ion-item>
+       <!-- Sección de Motivos -->
+       <ion-item>
+        <ion-label>Motivos</ion-label>
+        <ion-select formControlName="idMotivos">
+          <ion-select-option
+            *ngFor="let motivo of motivos"
+            [value]="motivo.idMotivos"
+          >
+            {{ motivo.nombreMotivo }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <form [formGroup]="myform" (ngSubmit)="agregarItem()">
+  
+        <ion-item>
+          <ion-label position="floating">Item</ion-label>
+          <ion-select formControlName="item" interface="action-sheet" [(ngModel)]="selectedItem">
+            <ion-select-option *ngFor="let item of uniqueItems" [value]="item">{{ item }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+      
+        <ion-item>
+          <ion-label position="floating">Cantidad</ion-label>
+          <ion-input formControlName="cantidad" type="number"></ion-input>
+        </ion-item>
+        <ion-button type="submit" expand="block">Agregar Item</ion-button>
+      </form>
+      
+      <ion-list>
+        <ion-item *ngFor="let item of eppaEntregarList">
+          <ion-label>{{ item.item }}</ion-label>
+          <ion-label>{{ item.cantidad }}</ion-label>
+          <!-- Añadir botón con icono de eliminar -->
+          <ion-button fill="clear" (click)="eliminarItem(item)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="toList()">Regresar</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="agregarDetalle()">Guardar Detalle</ion-button>
+      </ion-col>
+    </ion-row>
+    </form>
+  </ion-content>
+  
