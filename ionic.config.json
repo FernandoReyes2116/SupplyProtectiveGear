@@ -1,0 +1,7 @@
+{
+  "name": "SupplyProtectiveGear",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

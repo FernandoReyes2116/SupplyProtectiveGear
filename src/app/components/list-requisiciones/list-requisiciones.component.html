@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center ion-padding"
+      >Lista de Requisiciones</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-item>
+  <ion-label position="stacked">Número de Requisición:</ion-label>
+  <ion-input type="text" [(ngModel)]="requisitionNumber"></ion-input>
+</ion-item>
+<ion-button expand="block" (click)="loadRequisitionLines(requisitionNumber)"
+  >Cargar Requisiciones</ion-button
+>
+
+<ion-list *ngIf="requisitionLines.length > 0">
+  <ion-card
+    *ngFor="let requisitionLine of requisitionLines"
+    class="requisition-card"
+  >
+    <ion-card-content class="custom-card-content">
+      <ion-card-header>
+        <ion-card-title
+          >#Requisicion: {{ requisitionLine.RequisitionNumber }}</ion-card-title
+        >
+      </ion-card-header>
+      <ion-label class="item-label"
+        >ItemCod: {{ requisitionLine.Item }}</ion-label
+      >
+      <ion-label class="item-description"
+        >Articulo: {{ requisitionLine.ItemDescription }}</ion-label
+      >
+      <ion-label class="quantity-label"
+        >Cantidad: {{ requisitionLine.RequiredQuantity }}</ion-label
+      >
+      <!-- Agrega más campos si es necesario -->
+    </ion-card-content>
+  </ion-card>
+</ion-list>

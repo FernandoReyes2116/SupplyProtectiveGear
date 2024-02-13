@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center ion-padding">Editar entrega</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<form [formGroup]="myform" novalidate>
+
+  <ion-item>
+    <ion-label>Departamento</ion-label>
+    <ion-select
+      position="stacked"
+      formControlName="idDepartamento"
+    >
+      <ion-select-option
+        class="error ion-select"
+        *ngFor="let departamento of departamentos"
+        [value]="departamento.idDepartamento"
+      >
+        {{ departamento.nombreDepartamento }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Gerencia</ion-label>
+    <ion-select
+      formControlName="idGerencia"
+    >
+      <ion-select-option
+        *ngFor="let gerencia of gerencias"
+        [value]="gerencia.idGerencia"
+      >
+        {{ gerencia.nombreGerencia }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Observaciones</ion-label>
+    <ion-textarea formControlName="observaciones"></ion-textarea>
+  </ion-item>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button type="submit" expand="block" (click)="updateEntregasEpp()">Actualizar</ion-button>
+      <ion-button type="submit" expand="block" (click)="toList()">Regresar</ion-button>
+
+    </ion-toolbar>
+  </ion-footer>
+</form>

@@ -1,0 +1,44 @@
+<!-- {{ detalledata | json }} -->
+<div class="titulo-contenedor">
+  <h2>Datos del Detalle</h2>
+  <!-- Aquí puedes colocar cualquier otro contenido relacionado con los datos del detalle -->
+  <div>
+    <p>Total de Epp Entregados: {{ totalCantidad }}</p>
+  </div>
+</div>
+
+<ion-card *ngIf="detalledata && detalledata.length > 0">
+  <ion-card-header>
+    <h2>Detalles</h2>
+  </ion-card-header>
+  <ion-card-content>
+      <ion-item *ngFor="let detalleEntrega of detalledata">
+        <ion-label>nombre Motivo:{{ detalleEntrega.nombreMotivo }}</ion-label>
+        <ion-label>Empleado:{{ detalleEntrega.empleadoaEntrega }}</ion-label>
+      </ion-item>
+  </ion-card-content>
+</ion-card>
+
+
+
+<ion-card *ngIf="ePPaEntregar && ePPaEntregar.length > 0">
+  <ion-card-header>
+    <h2>Lista de EPP entregados </h2>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let item of ePPaEntregar">
+        <ion-label>Item: {{ item.item }}</ion-label>
+        <ion-label>Cantidad: {{ item.cantidad }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+<div *ngIf="!ePPaEntregar || ePPaEntregar.length === 0">
+  <p>No hay datos disponibles.</p>
+</div>
+
+
+<ion-col>
+  <ion-button (click)="toList()">regresar</ion-button>
+</ion-col>

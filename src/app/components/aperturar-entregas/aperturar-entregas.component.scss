@@ -1,0 +1,50 @@
+ion-content {
+    padding: 20px;
+  
+    form {
+      ion-item {
+        margin-bottom: 20px;
+  
+        ion-label {
+          font-weight: bold;
+          color: #333;
+          margin-bottom: 5px;
+        }
+  
+        ion-input,
+        ion-select,
+        ion-textarea {
+          width: calc(100% - 20px); // Restar el espacio del padding
+          border: none; // Eliminar el borde
+          border-radius: 5px;
+          padding: 10px;
+          margin-bottom: 10px;
+  
+          &::placeholder {
+            color: #999;
+          }
+        }
+  
+        ion-select {
+          max-width: calc(100% - 22px); // Restar el espacio del padding y el borde
+        }
+  
+        ion-textarea {
+          min-height: 150px;
+        }
+      }
+    }
+  }
+  
+  ion-footer {
+    ion-toolbar {
+      ion-button {
+        margin-bottom: 10px;
+  
+        &:last-child {
+          margin-bottom: 0; // Eliminar el margen inferior del último botón
+        }
+      }
+    }
+  }
+  

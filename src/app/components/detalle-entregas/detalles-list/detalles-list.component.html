@@ -1,0 +1,63 @@
+<div class="encabezado">
+  <h2>Lista Detalles</h2>
+  <ion-icon  (click)="toList()" name="return-up-back-outline"></ion-icon>
+</div>
+
+<ion-searchbar
+  [(ngModel)]="filtro"
+  placeholder="Buscar por RequisitionNumber"
+  (ionChange)="filtrarDetalles()"
+  (ionClear)="recargarPagina()"
+></ion-searchbar>
+
+<div *ngIf="detallesEntrega && detallesEntrega.length > 0">
+  <div *ngFor="let detalleEntrega of detallesEntrega" class="card">
+    <div class="card-header"></div>
+
+    <div class="card-body">
+      <div class="titulo-empleado">
+        <label>Empleado:</label>
+        <span>{{ detalleEntrega.empleadoaEntrega }}</span>
+      </div>
+
+      <div>
+        <label>Motivo:</label>
+        <span>{{ detalleEntrega.nombreMotivo }}</span>
+      </div>
+
+      <div>
+        <label>Fecha de Registro:</label>
+        <span>{{ detalleEntrega.fechaRegistro }}</span>
+      </div>
+    </div>
+
+    <ion-grid>
+      <ion-row justify-content-center align-items-center>
+        <ion-col size="auto">
+          <!-- Segundo botón con icono -->
+          <ion-icon name="add" [routerLink]="['/home/agregar-items/', detalleEntrega?.idDetalleEntrega]"></ion-icon>
+        </ion-col>
+        <ion-col size="auto">
+          <!-- Primer botón -->
+          <ion-icon name="create-outline" routerLink="/home/editar-detalle/{{ detalleEntrega?.idDetalleEntrega }}"></ion-icon>
+        </ion-col>
+        <ion-col size="auto">
+          <!-- Segundo botón con icono -->
+          <ion-icon name="reader-outline" [routerLink]="['/home/detalle-registro/', detalleEntrega?.idDetalleEntrega]"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>
+
+<footer class="pie-de-pagina">
+  <div class="contenedor">
+    <ion-col>
+      <ion-button (click)="toList()">regresar</ion-button>
+    </ion-col>
+  </div>
+</footer>
+
+<div *ngIf="!detallesEntrega || detallesEntrega.length === 0">
+  <p>No se encontraron detalles de entrega.</p>
+</div>

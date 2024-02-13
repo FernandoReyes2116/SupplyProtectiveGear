@@ -1,0 +1,173 @@
+ion-list {
+    ion-item {
+      border-bottom: 1px solid #ccc;
+      padding: 10px;
+  
+      ion-button.realizar-entrega {
+        margin-top: 10px;
+        --background: #007bff;
+        --color: white;
+        float: right; /* Alinea el botón a la derecha */}
+  
+      ion-grid {
+        ion-row {
+          ion-col {
+            ion-label {
+              display: block;
+              margin-bottom: 5px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+  
+      ion-button {
+        margin-top: 10px;
+        width: 100%;
+        --background: #007bff; /* Color de fondo del botón */
+        --color: white; /* Color del texto del botón */
+      }
+    }
+  
+  }
+  ion-card-content {
+    ion-grid {
+      ion-row {
+        ion-col {
+          ion-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px; /* Tamaño de fuente ajustable */
+            // Otros estilos que desees agregar
+          }
+        }
+      }
+    }
+  
+    ion-button {
+      margin-top: 16px; /* Espacio entre los campos y el botón */
+    }
+  }
+  
+  page-home {
+    .custom-grid {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+  
+      .custom-col {
+        padding: 0 8px;
+  
+        ion-item {
+          margin-bottom: 8px;
+        }
+  
+        ion-button {
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+  /* requisition-card.scss */
+  
+  ion-card {
+    margin-bottom: 16px; /* Espacio entre tarjetas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para las tarjetas */
+  }
+  
+  ion-card-header {
+    ion-card-title {
+      font-weight: bold;
+      color: #333; /* Color del título */
+    }
+  }
+  
+  ion-card-content2 {
+    ion-label {
+      display: block;
+      margin-bottom: 8px; /* Espacio entre etiquetas */
+      font-size: 14px; /* Tamaño de fuente para los detalles */
+      color: #666; /* Color del texto */
+    }
+  }
+  
+  
+  // Estilos para ion-card-content y sus hijos
+  .custom-card-content {
+    // Estilos generales para el contenido del card
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  
+    // Estilos para ion-label dentro de ion-card-content
+    ion-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+      color: #333;
+      // Otros estilos que desees aplicar a todos los ion-label dentro de ion-card-content
+    }
+  
+    // Estilos específicos para cada clase de ion-label
+    .item-label {
+      font-weight: bold;
+    }
+  
+    .item-description {
+      font-style: italic;
+    }
+  
+    .quantity-label {
+      color: #54c71b;
+      // Otros estilos específicos para quantity-label
+    }
+  }
+  // Estilos para tarjetas de requisiciones
+  .requisition-card {
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease-in-out;
+  
+    &:hover {
+      transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+    }
+  
+    // Estilos para tarjetas disponibles
+    &.disponible-card {
+      background-color: #eaf7ea; /* Fondo verde para disponibles */
+      border: 2px solid #2ecc71; /* Borde verde */
+    }
+  
+    // Estilos para tarjetas agotadas
+    &.agotado-card {
+      background-color: #fceae8; /* Fondo rojo para agotadas */
+      border: 2px solid #e74c3c; /* Borde rojo */
+    }
+  }
+  
+  // Estilos para el contenido de las tarjetas
+  .custom-card-content2 {
+    ion-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+      // Otros estilos generales para las etiquetas dentro de las tarjetas
+    }
+  
+    .item-label {
+      font-weight: bold;
+    }
+  
+    .item-description {
+      font-style: italic;
+    }
+  
+    .quantity-label {
+      color: #43e622;
+      // Otros estilos específicos para la clase quantity-label
+    }
+  }
+  

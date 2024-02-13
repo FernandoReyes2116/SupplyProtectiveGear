@@ -1,0 +1,38 @@
+/* login.component.scss */
+
+ion-header {
+  ion-toolbar {
+    ion-title {
+      text-align: center; // Centrar el título en el header
+    }
+  }
+}
+
+ion-content {
+  display: flex;
+  justify-content: center; // Centrar horizontalmente el contenido
+  align-items: center; // Centrar verticalmente el contenido
+
+  .form-container {
+    max-width: 400px; // Ancho máximo del contenedor del formulario
+    width: 90%; // Ancho del contenedor del formulario
+
+    .form-box {
+      border: 1px solid #ccc; // Borde del recuadro
+      border-radius: 8px; // Borde redondeado
+      padding: 20px; // Relleno del recuadro
+
+      form {
+        ion-item {
+          ion-label {
+            font-size: 16px; // Tamaño de la fuente de las etiquetas de los campos
+          }
+        }
+
+        ion-button {
+          margin-top: 20px; // Espacio superior entre los campos del formulario y el botón
+        }
+      }
+    }
+  }
+}
